@@ -1,0 +1,280 @@
+:root{
+    --c-1:#B9F3FC; /* light aqua */
+    --c-2:#AEE2FF; /* light blue */
+    --c-3:#93C6E7; /* steel blue */
+    --c-4:#FEDEFF; /* soft pink */
+    --c-5:#5D688A; /* slate ink */
+    --ink:#2b2f42;
+    --ink-soft:#5D688ACC;
+    --white:#ffffff;
+
+    /* Priority mapping using your palette */
+    --prio-high-bg: var(--c-4);
+    --prio-high-br: var(--c-3);
+    --prio-high-tx: var(--c-5);
+
+    --prio-med-bg: var(--c-2);
+    --prio-med-br: #8ec7f0;
+    --prio-med-tx: var(--c-5);
+
+    --prio-low-bg: var(--c-1);
+    --prio-low-br: #a5e9f6;
+    --prio-low-tx: var(--c-5);
+
+    --danger-br: var(--c-3);
+    --danger-tx: var(--c-5);
+    --danger-hover-bg: var(--c-3);
+    --danger-hover-tx: #fff;
+
+    --focus: var(--c-3);
+    --card-br: #e8f3ff;
+    --shadow: 0 10px 30px rgba(93,104,138,0.12);
+    --radius-lg: 16px;
+    --radius: 12px;
+    --radius-sm: 10px;
+    --gap: 16px;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    color: var(--c-5);
+    background: linear-gradient(135deg, var(--c-1), var(--c-2), var(--c-3));
+    background-attachment: fixed;
+}
+
+.app{
+    min-height: 100dvh;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    backdrop-filter: saturate(120%) blur(2px);
+}
+
+/* Sidebar */
+.sidebar{
+    width: 280px;
+    flex: 0 0 280px;
+    background: color-mix(in oklab, var(--c-4) 90%, white 10%);
+    border-right: 1px solid color-mix(in oklab, var(--c-2) 60%, white 40%);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    box-shadow: var(--shadow);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.sidebar .heading{
+    display:flex; align-items:center; gap:10px;
+    padding-bottom: 12px; border-bottom:1px solid #e8e8f2;
+}
+.projects-list{
+    overflow: auto;
+    display:flex; flex-direction:column; gap:8px;
+    padding-right: 4px;
+}
+.project-btn{
+    width:100%;
+    text-align:left;
+    padding:10px 12px;
+    border-radius: 10px;
+    border:1px solid transparent;
+    background: transparent;
+    color: var(--c-5);
+    cursor: pointer;
+    transition: background .2s, border-color .2s, transform .02s;
+}
+.project-btn:hover{ background: color-mix(in oklab, var(--c-1) 60%, white 40%); }
+.project-btn.active{
+    background: color-mix(in oklab, var(--c-2) 40%, white 60%);
+    border-color: var(--c-3);
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:10px 12px; border-radius: 10px; border:1px solid transparent;
+    background: var(--c-3); color: var(--c-5); font-weight: 600; cursor: pointer;
+    box-shadow: 0 6px 18px rgba(147,198,231,.25);
+    transition: background .2s, transform .02s, color .2s, border-color .2s;
+}
+.btn:hover{ background: var(--c-2); }
+.btn:active{ background: var(--c-1); transform: translateY(1px); }
+
+.btn-ghost{
+    background: transparent; border: 1px solid color-mix(in oklab, var(--c-2) 60%, white 40%); color: var(--c-5);
+}
+.btn-ghost:hover{ background: color-mix(in oklab, var(--c-1) 50%, white 50%); }
+
+.btn-danger{
+    background: transparent;
+    color: var(--danger-tx);
+    border: 1px solid var(--danger-br);
+}
+.btn-danger:hover{
+    background: var(--danger-hover-bg);
+    color: var(--danger-hover-tx);
+    border-color: var(--danger-hover-bg);
+}
+
+/* Main wrap */
+.main{
+    flex: 1 1 auto;
+    display:flex;
+}
+.panel{
+    background: color-mix(in oklab, var(--c-4) 90%, white 10%);
+    border: 1px solid color-mix(in oklab, var(--c-2) 60%, white 40%);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    display: flex; flex-direction: column;
+    width: 100%;
+    min-height: calc(100dvh - 20px);
+}
+.header{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap: wrap; gap: 12px;
+}
+.title{ margin:0; font-size: 28px; font-weight: 800; color: var(--c-5); }
+.meta{ margin:2px 0 0; font-size: 13px; color: var(--ink-soft); }
+
+.toolbar{ display:flex; align-items:center; gap:10px; flex-wrap: wrap; }
+
+/* Inputs */
+.input, .select{
+    padding:10px 12px;
+    border-radius: 10px;
+    border:1px solid color-mix(in oklab, var(--c-3) 60%, white 40%);
+    background: #fff;
+    color: var(--c-5);
+    font-size: 14px;
+    outline: none;
+    transition: box-shadow .2s, border-color .2s;
+}
+.input:focus, .select:focus{
+    border-color: var(--focus);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--focus) 35%, transparent);
+}
+
+/* Todos grid */
+.todos{ margin-top: 16px; display:grid; gap: 12px; }
+@media(min-width: 720px){ .todos{ grid-template-columns: 1fr; } }
+
+.card{
+    background: #fff;
+    border: 1px solid var(--card-br);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(93,104,138,0.10);
+    transition: transform .06s;
+}
+.card:hover{ transform: translateY(-1px); }
+
+.card-top{
+    display:flex; align-items:center; justify-content:space-between; gap: 12px;
+    padding: 14px 16px;
+}
+.card-left{ display:flex; align-items:center; gap: 12px; }
+.checkbox{
+    width: 20px; height: 20px; accent-color: var(--c-3);
+    cursor: pointer;
+}
+.card-title-wrap{ display:flex; flex-direction:column; gap: 4px; }
+.card-title{
+    font-weight: 600; color: #2f3247;
+}
+.card-title.done{ color: #9aa0b6; text-decoration: line-through; }
+.card-meta{ font-size: 12px; color: #6b7390; display:flex; align-items:center; gap:8px; }
+.overdue{ color: #b45770; font-weight: 700; }
+
+/* Priority pills */
+.pill{
+    display:inline-flex; align-items:center; gap:6px;
+    padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 600;
+    border: 1px solid;
+}
+.pill-high{ background: var(--prio-high-bg); border-color: var(--prio-high-br); color: var(--prio-high-tx); }
+.pill-med{ background: var(--prio-med-bg); border-color: var(--prio-med-br); color: var(--prio-med-tx); }
+.pill-low{ background: var(--prio-low-bg); border-color: var(--prio-low-br); color: var(--prio-low-tx); }
+
+/* Controls on right */
+.controls{ display:flex; align-items:center; gap:8px; flex-wrap: wrap; }
+.control-sm{
+    font-size: 12px; padding:6px 8px; border-radius: 8px; border:1px solid #d6e8fb; background:#fff; color: var(--c-5);
+}
+
+.details{ padding: 0 16px 14px; display:none; }
+.details-enter{ max-height: 0; opacity: 0; overflow: hidden; }
+.details-enter-active{ max-height: 900px; opacity: 1; transition: max-height 260ms ease, opacity 200ms ease; }
+.details-exit{ max-height: 900px; opacity: 1; overflow: hidden; }
+.details-exit-active{ max-height: 0; opacity: 0; transition: max-height 220ms ease, opacity 180ms ease; }
+
+.desc{ color: #2f3247; font-size: 14px; margin:0; }
+.notes{ color: #6b7390; font-size: 13px; margin: 8px 0 0; }
+
+.edge-strip{ height: 4px; width:100%; }
+
+/* Checklist inline in details */
+.cl-wrap{ margin-top: 12px; }
+.cl-title{ font-size:12px; font-weight:700; color:#4a5070; margin-bottom: 6px; }
+.cl-list{ display:flex; flex-direction:column; gap:6px; }
+.cl-row{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background: color-mix(in oklab, var(--c-1) 35%, white 65%);
+    border: 1px solid color-mix(in oklab, var(--c-2) 40%, white 60%);
+    border-radius: 10px; padding: 6px 8px;
+}
+.cl-row .left{ display:flex; align-items:center; gap:8px; flex:1; cursor: pointer; }
+.cl-row .txt{ font-size: 14px; color: #2f3247; }
+.cl-row .txt.done{ text-decoration: line-through; color:#9aa0b6; }
+
+/* Modals */
+.modal{
+    position: fixed; inset: 0; display:none; align-items:center; justify-content:center;
+    background: color-mix(in oklab, var(--c-5) 40%, transparent); padding: 16px; z-index: 50;
+}
+.modal.show{ display:flex; }
+.dialog{
+    width: 100%; max-width: 820px; background: #fff; border-radius: 14px; box-shadow: var(--shadow);
+    border: 1px solid color-mix(in oklab, var(--c-2) 60%, white 40%);
+    padding: 18px;
+}
+.dialog .head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.dialog .close{ border:none; background: transparent; padding: 8px; border-radius: 8px; cursor: pointer; }
+.dialog .close:hover{ background: #f1f2f8; }
+
+.form-grid{ display:grid; grid-template-columns: 1fr; gap:12px; }
+@media(min-width: 720px){ .form-grid{ grid-template-columns: 1fr 1fr; } }
+.full{ grid-column: 1 / -1; }
+
+.field label{ display:block; font-size: 13px; font-weight:600; color:#3c4160; margin-bottom:6px; }
+.field input[type="text"], .field input[type="date"], .field textarea, .field select{
+    width:100%; padding:10px 12px; border-radius: 10px; border:1px solid #d6e0f5; outline: none;
+    transition: box-shadow .2s, border-color .2s; font-size: 14px; color: var(--c-5);
+}
+.field textarea{ resize: vertical; min-height: 84px; }
+.field input:focus, .field textarea:focus, .field select:focus{
+    border-color: var(--focus);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--focus) 30%, transparent);
+}
+
+/* Checklist in modal */
+.cl-modal-list{ display:flex; flex-direction:column; gap:8px; }
+.cl-modal-row{ display:flex; align-items:center; gap:8px; }
+.cl-modal-row input[type="text"]{
+    flex:1; padding:10px 12px; border-radius: 10px; border:1px solid #d6e0f5;
+}
+.cl-modal-add{
+    display:flex; gap:8px; margin-top: 8px;
+}
+
+/* Utility */
+.row{ display:flex; gap:8px; align-items:center; justify-content:flex-end; }
+.spacer{ height: 8px; }
+.empty{ color: #6b7390; font-size: 14px; }
+
+/* Hide on small overflow */
+.nowrap{ white-space: nowrap; }
