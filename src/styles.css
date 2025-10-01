@@ -1,14 +1,14 @@
 :root{
-    --c-1:#B9F3FC; /* light aqua */
-    --c-2:#AEE2FF; /* light blue */
-    --c-3:#93C6E7; /* steel blue */
-    --c-4:#FEDEFF; /* soft pink */
-    --c-5:#5D688A; /* slate ink */
+    --c-1:#B9F3FC;
+    --c-2:#AEE2FF;
+    --c-3:#93C6E7;
+    --c-4:#FEDEFF;
+    --c-5:#5D688A;
     --ink:#2b2f42;
     --ink-soft:#5D688ACC;
     --white:#ffffff;
 
-    /* Priority mapping using your palette */
+    /* Priority mapping */
     --prio-high-bg: var(--c-4);
     --prio-high-br: var(--c-3);
     --prio-high-tx: var(--c-5);
@@ -276,5 +276,4 @@ body{
 .spacer{ height: 8px; }
 .empty{ color: #6b7390; font-size: 14px; }
 
-/* Hide on small overflow */
 .nowrap{ white-space: nowrap; }
